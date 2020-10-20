@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 500,
+  "title": "Fires in Australia",
+  "projection": {"type": "equalEarth"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://github.com/jemima259/FIT3179/blob/main/map_of_aus.json",
+        "format": {"type": "topojson", "feature": "custom"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/fire_archive_M6_96619.csv"
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"}
+      },
+      "layer": [
+        {
+          "mark": {"type": "circle", "tooltip": {"content": "data"}},
+          "encoding": {
+            "size": {"value": 10},
+            "color": {
+              "field": "brightness",
+              "type": "quantitative",
+              "scale": {"scheme": "oranges"}
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}
