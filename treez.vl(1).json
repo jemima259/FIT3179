@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 500,
+  "title": "Trees in Melbourne",
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/melbshape.json",
+        "format": {"type": "topojson", "feature": "CBDboundary"}
+      },
+      "mark": {"type": "geoshape", "fill": "white", "stroke": "lightgrey"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/Trees__with_species_and_dimensions__Urban_Forest_.csv"
+      },
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"}
+      },
+      "layer": [
+        {
+          "mark": {"type": "circle", "tooltip": {"content": "data"}},
+          "encoding": {
+            "size": {
+              "field": "Diameter Breast Height",
+              "type": "quantitative",
+              "scale": {"range": [0, 5]}
+            },
+            "color": {
+              "field": "Age Description",
+              "type": "ordinal",
+              "sort": [
+                "New",
+                "Juvenile",
+                "Semi-Mature",
+                "Mature",
+                "Over-Mature",
+                " "
+              ],
+              "scale": {"scheme": "greens"}
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}
