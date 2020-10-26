@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 600,
+  "title": "Trees planted over time)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/Trees__with_species_and_dimensions__Urban_Forest_.csv"
+  },
+  "transform": [{"filter": "datum.Year_Planted > 1996"}],
+  "selection": {
+    "family_highlight": {
+      "type": "multi",
+      "fields": ["Family"],
+      "bind": "legend"
+    }
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "Year_Planted",
+      "type": "temporal",
+      "title": "Year Planted",
+      "axis": {"tickCount": "year"},
+      "scale": {"type": "time"}
+    },
+    "y": {
+      "aggregate": "count",
+      "field": "Family",
+      "type": "quantitative",
+      "title": "Trees Planted",
+      "scale": {"type": "linear", "domain": [0, 6500]}
+    },
+    "layer": [
+      {
+        "mark": {"type": "text", "align": "right"},
+        "encoding": {"text": "hi"},
+        "condition": {
+          "test": "datum.Year_Planted == '1998' && datum.Family == 'Myrtaceae",
+          "value": 1
+        }
+      }
+    ],
+    "tooltip": [
+      {"field": "Year_Planted", "type": "temporal", "title": "Year Planted"},
+      {
+        "aggregate": "count",
+        "field": "Family",
+        "title": "Trees Planted",
+        "type": "quantitative",
+        "format": ","
+      }
+    ],
+    "color": {"field": "Family", "type": "nominal"},
+    "opacity": {
+      "condition": {"selection": "family_highlight", "value": 0.6},
+      "value": 0.2
+    }
+  },
+  "config": {}
+}
