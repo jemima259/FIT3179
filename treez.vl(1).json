@@ -25,12 +25,12 @@
           "mark": {"type": "circle", "tooltip": {"content": "data"}},
           "encoding": {
             "size": {
-              "field": "Diameter Breast Height",
+              "field": "Diameter_Breast_Height",
               "type": "quantitative",
               "scale": {"range": [0, 5]}
             },
             "color": {
-              "field": "Age Description",
+              "field": "Age_Description",
               "type": "ordinal",
               "sort": [
                 "New",
