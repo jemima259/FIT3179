@@ -5,16 +5,16 @@
   "title": "Trees planted over time)",
   "data": {
     "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/Trees__with_species_and_dimensions__Urban_Forest_.csv"
-  },
-  "transform": [{"filter": "datum.Year_Planted > 1996"}],
-  "selection": {
-    "family_highlight": {
-      "type": "multi",
-      "fields": ["Family"],
-      "bind": "legend"
-    }
-  },
-  "mark": "line",
+  }, 
+  "transform" : [{"filter": "datum.Year_Planted > 1996"}],
+"selection": {
+   "family_highlight": {
+     "type": "multi",
+     "fields": ["Family"],
+     "bind": "legend"
+} 
+},
+  "mark": "line", 
   "encoding": {
     "x": {
       "field": "Year_Planted",
@@ -23,6 +23,7 @@
       "axis": {"tickCount": "year"},
       "scale": {"type": "time"}
     },
+    
     "y": {
       "aggregate": "count",
       "field": "Family",
@@ -32,29 +33,40 @@
     },
     "layer": [
       {
-        "mark": {"type": "text", "align": "right"},
-        "encoding": {"text": "hi"},
-        "condition": {
-          "test": "datum.Year_Planted == '1998' && datum.Family == 'Myrtaceae",
-          "value": 1
+        "mark": {
+          "type": "text",
+          "align": "right"
+        },
+        "encoding":{
+          "text" : {"field": "Year_Planted", "type": "time"}
+          },
+          "color": {"value": "black"},
+          "opacity":{
+            "condition":{
+              "test": "datum['Year_Planted'] == '1998' && datum.Family == 'Myrtaceae'",
+              "value": 1
         }
+        }
+
+        
       }
     ],
-    "tooltip": [
-      {"field": "Year_Planted", "type": "temporal", "title": "Year Planted"},
-      {
-        "aggregate": "count",
-        "field": "Family",
-        "title": "Trees Planted",
-        "type": "quantitative",
-        "format": ","
-      }
-    ],
-    "color": {"field": "Family", "type": "nominal"},
-    "opacity": {
+    
+    "color": {
+      "field": "Family",
+      "type": "nominal"
+    },
+     "opacity": {
       "condition": {"selection": "family_highlight", "value": 0.6},
-      "value": 0.2
-    }
-  },
-  "config": {}
-}
+      "value": 0.2},
+    "tooltip": [
+      {"field": "Year_Planted",
+      "type": "temporal",
+      "title": "Date Planted"},
+      {"aggregate": "count",
+      "field": "Family",
+      "title": "Trees Planted",
+      "type": "quantitative",
+      "format": ","}
+    ]
+  }}
