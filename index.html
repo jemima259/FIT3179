@@ -18,12 +18,12 @@
 <h2>This is my tree map so far</h2>
 <div id="tree_map"></div>
 
-<h2>This is a bubble plot</h2>
-<div id="bubble_plot"></div>
+<h2>This is a line graph</h2>
+<div id="line_graph"></div>
 
 <script type="text/javascript">
   
-  var vis1 = "https://jemima259.github.io/FIT3179/treez.vl(1).json";
+  var vis1 = "https://jemima259.github.io/FIT3179/trees_lines.vl.json";
   
   vegaEmbed('#tree_map', vis1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
@@ -31,7 +31,7 @@
   
   var vis2 = "https://jemima259.github.io/FIT3179/covi_multi.vl(1).json";
   
-  vegaEmbed('#bubble_plot', vis2).then(function(result) {
+  vegaEmbed('#line_graph', vis2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
