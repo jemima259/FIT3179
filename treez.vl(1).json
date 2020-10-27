@@ -18,7 +18,11 @@
         "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/homogenous_traffic_flow.json",
         "format": {"type": "topojson", "feature": "homogenous_traffic_flow"}
       },
-      "mark": {"type": "geoshape", "fill": "white", "stroke": "lightgrey", "clip": true}
+      "mark": {"type": "geoshape", "fill": "white", "stroke": "lightgrey", "clip": true},
+      "transform": [
+        {"filter": "datum.name == 'City of Melbourne'"}
+
+      ]
       
     },
     {
@@ -36,7 +40,7 @@
             "size": {
               "field": "Diameter_Breast_Height",
               "type": "quantitative",
-              "scale": {"range": [0, 3]}
+              "scale": {"range": [0, 5]}
             },
             "color": {
               "field": "Age_Description",
