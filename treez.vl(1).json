@@ -40,7 +40,10 @@
             "size": {
               "field": "Diameter_Breast_Height",
               "type": "quantitative",
-              "scale": {"range": [0, 5]}
+              "scale": {
+                "type": "threshold",
+                "domain": [100, 200, 300],
+                "range": [1,3,5,7]}
             },
             "color": {
               "field": "Age_Description",
