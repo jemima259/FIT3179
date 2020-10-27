@@ -1,5 +1,3 @@
-
-  
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": 800,
@@ -16,7 +14,6 @@
      "bind": "legend"
 } 
 },
-  "mark": "line", 
   "encoding": {
     "x": {
       "field": "Year_Planted",
@@ -30,30 +27,7 @@
       "aggregate": "count",
       "field": "Family",
       "type": "quantitative",
-      "title": "Trees Planted",
-      "scale": {"type": "linear", "domain": [0, 6500]}
-    },
-    "layer": [
-      {
-        "mark": {
-          "type": "text",
-          "align": "right"
-        },
-        "encoding":{
-          "text" : {"field": "Family", "type": "nominal"}
-          },
-          "color": {"value": "black"},
-          "opacity":{
-            "condition":{
-              "test": "datum['Year_Planted'] == '1998' && datum.Family == 'Myrtaceae'",
-              "value": 1
-        }
-        }
-
-        
-      }
-    ],
-    
+      "title": "Trees Planted"},
     "color": {
       "field": "Family",
       "type": "nominal",
@@ -61,18 +35,27 @@
         "test": "datum.Family != 'Myrtaceae'",
         "value": "lightgrey"
       }
-    },
-     "opacity": {
-      "condition": {"selection": "family_highlight", "value": 0.6},
-      "value": 0.2},
-    "tooltip": [
-      {"field": "Year_Planted",
-      "type": "temporal",
-      "title": "Date Planted"},
-      {"aggregate": "count",
-      "field": "Family",
-      "title": "Trees Planted",
-      "type": "quantitative",
-      "format": ","}
+    }
+  },
+    "layer": [
+     {  "mark": "line"},
+     {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "top"
+        },
+        "encoding":{
+          "text" : {"field": "Family", "type": "nominal"},
+          "color": {"value": "black"},
+          "opacity":{
+            "condition":{
+              "test": "datum.Family == 'Myrtaceae'", "value": 1
+        },
+        
+        "value": 0
+        }
+        }
+      }
     ]
-  }}
+  }
