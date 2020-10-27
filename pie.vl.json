@@ -9,7 +9,12 @@
   "mark": {"type": "arc", "innerRadius": 50},
   "encoding": {
     "theta": {"aggregate": "count","field": "Located_in", "type": "quantitative", "stack":true},
-    "color": {"field": "Located_in", "type": "nominal", "legend":null, "scale":{"domain":["Street", "Park"]}, "range":["#a1d99b","#31a354"]}
+    "color": {
+      "field": "Located_in", 
+      "type": "nominal", 
+      "legend":null, 
+      "scale":{
+        "domain":["Street", "Park"], "range":["#a1d99b","#31a354"]}}
   },
   "layer": [{
      "layer": [{
