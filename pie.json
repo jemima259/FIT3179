@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "description": "A simple donut chart with embedded data.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/tree_locations.csv"
+  },
+  "transform" : [{"filter": "datum.Located_in != ''"}],
+  
+  "mark": {"type": "arc", "innerRadius": 50},
+  "encoding": {
+    "theta": {"aggregate": "count","field": "Located_in", "type": "quantitative", "stack":true},
+    "color": {"field": "Located_in", "type": "nominal", "legend":null, "scale":{"domain":["Street", "Park"]}, "range":["#a1d99b","#31a354"]}
+  },
+  "layer": [{
+     "layer": [{
+    "mark": {"type": "arc", "innerRadius": 50}
+  }, {
+    "mark": {"type": "text", "radius": 120},
+    "encoding": {
+      "text": {"field": "Located_in", "type": "nominal"}
+    }
+  }],
+    "mark": {"type": "text", "radius": 90},
+    "encoding": {
+      "text": {"field": "Located_in", "type": "nominal"}
+    }
+  }],
+  "view": {"stroke": null}
+}
