@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 800,
+  "width": 500,
   "height": 500,
   "title": "Trees in Melbourne",
   "projection": {"type": "mercator"},
@@ -20,8 +20,10 @@
       },
       "mark": {"type": "geoshape", "fill": "white", "stroke": "lightgrey", "clip": true},
       "transform": [
-        {"filter": "datum.name == 'City of Melbourne'"}
-
+        {"filter": "datum.properties.MIDPNT_LAT < -37.77"},
+        {"filter": "datum.properties.MIDPNT_LAT > -37.85"},
+        {"filter": "datum.properties.MIDPNT_LON < 145"},
+        {"filter": "datum.properties.MIDPNT_LON > 144.9"}
       ]
       
     },
