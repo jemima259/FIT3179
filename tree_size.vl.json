@@ -3,7 +3,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/size_of_trees.csv"
   },
-  "width": 200,
+  "width": "container",
   "height": 200,
   "transform": [
     {"filter": "datum.Diameter_Breast_Height !== ''"},
