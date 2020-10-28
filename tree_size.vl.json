@@ -29,7 +29,8 @@
       
       "field": "Age_Description",
       "type": "ordinal",
-      "axis": {"grid": false}
+      "axis": {"grid": false},
+      "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]
     },
     
     
