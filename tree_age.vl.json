@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 300,
+  "height": 300,
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/size_of_trees.csv"
+  },
+  "transform" : [{"filter": "datum.Age_Description != ''"}],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Age_Description", "type": "ordinal", "axis": {"labelAngle": 0}, "title": null},
+    "y": {
+      "aggregate": "count",
+      "field": "Age_Description", 
+      "type": "quantitative",
+      "title": "Number of trees"}
+    },
+    "colour":{"value": "green"}
+    
+  }
