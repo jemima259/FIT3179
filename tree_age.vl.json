@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 300,
-  "height": 300,
+  "width": 200,
+  "height": 200,
   "description": "A simple bar chart with embedded data.",
   "data": {
     "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/size_of_trees.csv"
