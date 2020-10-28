@@ -1,19 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 800,
-  "height": 600,
+  "width": 400,
+  "height": 400,
   "title": "Trees planted over time",
   "data": {
     "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/2Trees__with_species_and_dimensions__Urban_Forest_.csv"
   }, 
   "transform" : [{"filter": "datum.Year_Planted > 1996"}],
-"selection": {
-   "family_highlight": {
-     "type": "multi",
-     "fields": ["Family"],
-     "bind": "legend"
-} 
-},
+
   "encoding": {
     "x": {
       "field": "Year_Planted",
@@ -31,6 +25,7 @@
     "color": {
       "field": "Family",
       "type": "nominal",
+      "legend":null,
       "condition":{
         "test": "datum.Family != 'Myrtaceae'",
         "value": "lightgrey"
