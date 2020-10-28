@@ -9,7 +9,7 @@
   "transform" : [{"filter": "datum.Age_Description != ''"}],
   "mark": "bar",
   "encoding": {
-    "x": {"field": "Age_Description", "type": "ordinal", "axis": {"labelAngle": 0}, "title": null},
+    "x": {"field": "Age_Description", "type": "ordinal", "axis": {"labelAngle": 0}, "title": null, "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]},
     "y": {
       "aggregate": "count",
       "field": "Age_Description", 
