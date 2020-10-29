@@ -26,20 +26,23 @@
       "field": "Family",
       "type": "nominal",
       "legend":null,
+   
       "condition":{
         "test": "datum.Family != 'Myrtaceae'",
         "value": "lightgrey"
       }
+
     }
   },
     "layer": [
-     {  "mark": "line"},
+     {  "mark": {"type":"line","color":"green" }},
      {
         "mark": {
           "type": "text",
           "align": "left",
           "baseline": "top"
         },
+        "transform":[{"filter": "datum.Year_Planted == 883612800000"}],
         "encoding":{
           "text" : {"field": "Family", "type": "nominal"},
           "color": {"value": "black"},
