@@ -24,18 +24,22 @@
       "title": "Trees Planted"},
     "color": {
       "field": "Family",
-      "type": "nominal",
+      "type": "ordinal",
       "legend":null,
    
       "condition":{
         "test": "datum.Family != 'Myrtaceae'",
         "value": "lightgrey"
-      }
+      },
+      "scale": {"scheme": "greens"}
 
     }
   },
     "layer": [
-     {  "mark": {"type":"line","color":"green" }},
+     {  "mark": {"type":"line","color":"green" }
+
+     },
+     
      {
         "mark": {
           "type": "text",
