@@ -21,7 +21,6 @@
   ],
   "mark": {
     "type": "circle",
-    "opacity": 0.8,
     "fill": "#31a354"
   },
   "encoding": {
