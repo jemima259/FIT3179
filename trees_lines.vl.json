@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": "container",
-  "height": 400,
+  "height": 350,
   "title": "Trees planted over time",
   "data": {
     "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/2Trees__with_species_and_dimensions__Urban_Forest_.csv"
