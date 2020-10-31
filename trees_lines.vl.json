@@ -13,7 +13,7 @@
       "field": "Year_Planted",
       "type": "temporal",
       "title": "Year Planted",
-      "axis": {"tickCount": "year"},
+      "axis": {"tickCount": "year", "grid":false},
       "scale": {"type": "time"}
     },
     
@@ -21,7 +21,9 @@
       "aggregate": "count",
       "field": "Family",
       "type": "quantitative",
-      "title": "Trees Planted"},
+      "title": "Trees Planted",
+      "axis":{"grid":false}},
+
     "color": {
       "field": "Family",
       "type": "ordinal",
