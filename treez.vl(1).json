@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 400,
+  "width": "container",
   "height": 400,
   "title": "Trees in Melbourne",
   "projection": {"type": "mercator"},
@@ -39,26 +39,27 @@
         {
           "mark": {"type": "circle", "tooltip": {"content": "data"}},
           "encoding": {
+            "tooltip":[
+              {"field": "Scientific_Name",
+              "type": "ordinal",
+              "title": "Scientific Tree Name"},
+              {"field": "Family",
+              "type": "ordinal",
+              "title": "Family of Tree"},
+              {"field": "Longitude", "type": "quantitative"},
+              {"field": "Latitude", "type": "quantitative"}
+            ],
             "size": {
               "field": "Diameter_Breast_Height",
               "type": "quantitative",
               "scale": {
                 "type": "threshold",
                 "domain": [100, 200, 300],
-                "range": [1,3,5,7]}
+                "range": [1,3,5,7]},
+                "legend": null
             },
             "color": {
-              "field": "Age_Description",
-              "type": "ordinal",
-              "sort": [
-                "New",
-                "Juvenile",
-                "Semi-Mature",
-                "Mature",
-                "Over-Mature",
-                " "
-              ],
-              "scale": {"scheme": "greens"}
+              "value": "#31a354"
             }
           }
         }
