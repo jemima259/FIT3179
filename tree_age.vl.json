@@ -1,3 +1,5 @@
+
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": "container",
@@ -6,16 +8,17 @@
   "data": {
     "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/size_of_trees.csv"
   },
-  "transform" : [{"filter": "datum.Age_Description != ''"}],
+  "transform" : [
+    {"filter": "datum.Age_Description != ''"},      {"aggregate":[{"op":"count",
+      "field": "Age_Description", "as": "age_count"}], "groupby": ["Age_Description"]}, {"calculate":"datum.age_count/1000", "as":"age_sml"}],
   "title":"Number of trees by stage of life",
   "mark": "bar",
   "encoding": {
     "x": {"field": "Age_Description", "type": "ordinal", "axis": {"labelAngle": 0}, "title": "Stage of tree life", "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]},
     "y": {
-      "aggregate": "count",
-      "field": "Age_Description", 
+      "field": "age_sml", 
       "type": "quantitative",
-      "title": "Number of trees",
+      "title": "Number of trees (thousands)",
       "axis":{"grid":false}},
     
     "color":{"condition":{"test":"datum.Age_Description =='Mature' || datum.Age_Description =='Over-mature'","value": "#31a354"}, "value":"lightgrey"},
@@ -29,4 +32,3 @@
     ]
     }
   }
-
