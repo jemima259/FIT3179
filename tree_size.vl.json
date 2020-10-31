@@ -20,7 +20,7 @@
   "title":"Average trunk diameter by stage of life",
   "mark": "bar",
   "encoding": {
-    "x": {"field": "Age_Description", "type": "ordinal", "axis": {"labelAngle": 0}, "title": "Stage of tree life", "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]},
+    "x": {"field": "Age_Description", "type": "ordinal", "axis": {"labelAngle": 0}, "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]},
     "y": {
       
       "field": "Average Diameter", 
