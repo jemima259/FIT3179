@@ -1,15 +1,13 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": "container",
+  "height": 200,
+  "description": "A simple bar chart with embedded data.",
   "data": {
     "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/size_of_trees.csv"
   },
-  "width": "container",
-  "height": 200,
-  "transform": [
-    {"filter": "datum.Diameter_Breast_Height !== ''"},
-    {"filter": "datum.Age_Description !== ''"}
-  ],
-  "transform": [
+  "transform" : [{"filter": "datum.Age_Description != ''"},
     {
       "aggregate": [{
        "op": "mean",
@@ -19,30 +17,24 @@
       "groupby": ["Age_Description"]
     }
   ],
-  "mark": {
-    "type": "circle",
-    "fill": "#31a354"
-  },
+  "title":"Average trunk diameter by stage of life",
+  "mark": "bar",
   "encoding": {
-    "x": {
+    "x": {"field": "Age_Description", "type": "ordinal", "axis": {"labelAngle": 0}, "title": "Stage of tree life", "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]},
+    "y": {
       
-      "field": "Age_Description",
-      "title": "Stage of Life",
-      "type": "ordinal",
-      "axis": {"grid": false},
-      "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]
-    },
-    
-    
-    "size": {
-      "field": "Average Diameter",
+      "field": "Average Diameter", 
       "type": "quantitative",
-      "scale": {
-        "range": [100,1000]
-      },
-    "color": {"value": "green"}
-      
-    }
-  }
+      "title": "Average trunk diameter (cm)",
+      "axis":{"grid":false}},
     
+    "color":{"condition":{"test":"datum.Age_Description =='Mature' || datum.Age_Description =='Over-mature'","value": "#31a354"}, "value":"lightgrey"},
+    "tooltip":[
+      {"field": "Age_Description", "type": "ordinal", "title": "Stage of tree life"},
+      {
+      "field": "Average Diameter", 
+      "type": "quantitative",
+      "title": "Average trunk diameter (cm"}
+    ]
+    }
   }
