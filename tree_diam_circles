@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/size_of_trees.csv"
+  },
+  "width": "container",
+  "height": 200,
+  "transform": [
+    {"filter": "datum.Diameter_Breast_Height !== ''"},
+    {"filter": "datum.Age_Description !== ''"}
+  ],
+  "transform": [
+    {
+      "aggregate": [{
+       "op": "mean",
+       "field": "Diameter_Breast_Height",
+       "as": "Average Diameter"
+      }],
+      "groupby": ["Age_Description"]
+    }
+  ],
+  "mark": {
+    "type": "circle",
+    "fill": "#31a354"
+  },
+  "encoding": {
+    "x": {
+      
+      "field": "Age_Description",
+      "title": "Stage of Life",
+      "type": "ordinal",
+      "axis": {"grid": false},
+      "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]
+    },
+    
+    
+    "size": {
+      "field": "Average Diameter",
+      "type": "quantitative",
+      "scale": {
+        "range": [100,1000]
+      },
+    "color": {"value": "green"}
+      
+    }
+  }
+    
+  }
