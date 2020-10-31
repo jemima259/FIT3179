@@ -34,8 +34,19 @@
         "value": "lightgrey"
       },
       "scale": {"scheme": "greens"}
+    },
+      "tooltip":[
+      {"field": "Family", "type": "nominal", "title": "Family of Tree"},
+      {"field": "Year_Planted",
+      "type": "temporal",
+      "title": "Year Planted"},
+      {"aggregate": "count",
+      "field": "Family",
+      "type": "quantitative",
+      "title": "Number of Trees Planted"}
+      ]
 
-    }
+    
   },
     "layer": [
      {  "mark": {"type":"line","color":"green" }
