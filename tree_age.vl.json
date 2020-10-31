@@ -7,15 +7,26 @@
     "url": "https://raw.githubusercontent.com/jemima259/FIT3179/main/size_of_trees.csv"
   },
   "transform" : [{"filter": "datum.Age_Description != ''"}],
+  "title":"Number of trees by stage of life",
   "mark": "bar",
   "encoding": {
-    "x": {"field": "Age_Description", "type": "ordinal", "axis": {"labelAngle": 0}, "title": null, "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]},
+    "x": {"field": "Age_Description", "type": "ordinal", "axis": {"labelAngle": 0}, "title": "Stage of tree life", "sort":["New","Juvenile","Semi-Mature", "Mature", "Over-Mature"]},
     "y": {
       "aggregate": "count",
       "field": "Age_Description", 
       "type": "quantitative",
-      "title": "Number of trees"}
-    },
-    "colour":{"value": "green"}
+      "title": "Number of trees",
+      "axis":{"grid":false}},
     
+    "color":{"condition":{"test":"datum.Age_Description =='Mature' || datum.Age_Description =='Over-mature'","value": "#31a354"}, "value":"lightgrey"},
+    "tooltip":[
+      {"field": "Age_Description", "type": "ordinal", "title": "Stage of tree life"},
+      {
+      "aggregate": "count",
+      "field": "Age_Description", 
+      "type": "quantitative",
+      "title": "Number of trees"}
+    ]
+    }
   }
+
