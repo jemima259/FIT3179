@@ -25,8 +25,7 @@
     "tooltip":[
       {"field": "Age_Description", "type": "ordinal", "title": "Stage of tree life"},
       {
-      "aggregate": "count",
-      "field": "Age_Description", 
+      "field": "age_count", 
       "type": "quantitative",
       "title": "Number of trees"}
     ]
