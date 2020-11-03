@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Australian 2017 Marriage Equality Vote",
+  "width": 600,
+  "height": 500,
+  "projection": {"type": "azimuthalEqualArea", "rotate": [-133, 28, 0]},
+  "data": {
+    "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/0_students_questions/geo/2/CED_2016_AUST.json",
+    "format": {"type": "topojson", "feature": "CED_2016_AUST"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.CED_NAME16",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/0_students_questions/geo/2/survey.csv"
+        },
+        "key": "Federal_Electoral_Division",
+        "fields": [
+          "Total_Eligible_Participant",
+          "Total_Clear_Response",
+          "Total_Response_of_No",
+          "Total_Response_of_Yes"
+        ]
+      }
+    },
+    {
+      "calculate": "(datum.Total_Response_of_Yes -datum.Total_Response_of_No)/ datum.Total_Clear_Response",
+      "as": "Responses"
+    },
+    {
+      "calculate": "datum.Total_Clear_Response/datum.Total_Eligible_Participant * 100",
+      "as": "Participation_rate"
+    },
+    {
+      "calculate": "datum.Total_Response_of_Yes/ datum.Total_Clear_Response * 100",
+      "as": "survey_result"
+    }
+  ],
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "Responses",
+      "title": "Proportion of 'Yes' Responses",
+      "type": "quantitative",
+      "scale": {"scheme": "blueorange"}
+    },
+    "tooltip": [
+      {
+        "field": "properties.CED_NAME16",
+        "type": "nominal",
+        "title": "Electoral division"
+      },
+      {
+        "field": "Total_Eligible_Participant",
+        "type": "quantitative",
+        "title": "Total number of eligible participants"
+      },
+      {
+        "field": "Participation_rate",
+        "type": "quantitative",
+        "title": "Participation rate"
+      },
+      {
+        "field": "survey_result",
+        "type": "quantitative",
+        "title": "Survey result"
+      }
+    ]
+  }
+}
